@@ -20,20 +20,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="omS-hA-EKX">
-                                <rect key="frame" x="147.5" y="310.5" width="80" height="46"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <rect key="frame" x="69" y="246" width="237" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Popup With UIScrollView"/>
                                 <connections>
                                     <action selector="buttonPressed:" destination="Cdg-2T-ZkP" eventType="touchUpInside" id="GPN-Ka-cjG"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5T0-eT-WSu">
+                                <rect key="frame" x="48" y="365" width="278" height="39"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <state key="normal" title="Popup With UICollectionView"/>
+                                <connections>
+                                    <action selector="collectionPressed:" destination="Cdg-2T-ZkP" eventType="touchUpInside" id="xen-tU-fBA"/>
+                                    <segue destination="rUh-no-EsR" kind="presentation" identifier="collectionPop" modalPresentationStyle="overCurrentContext" modalTransitionStyle="crossDissolve" id="HXQ-Qn-QVa"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.77232704119999995" blue="0.97085249309999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.95014899969100952" green="0.91563892364501953" blue="0.79012101888656616" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="5T0-eT-WSu" firstAttribute="top" secondItem="omS-hA-EKX" secondAttribute="bottom" constant="80" id="ECe-Nh-Loh"/>
+                            <constraint firstItem="5T0-eT-WSu" firstAttribute="centerX" secondItem="0gI-FT-v34" secondAttribute="centerX" id="Eju-fE-GGx"/>
                             <constraint firstItem="omS-hA-EKX" firstAttribute="centerX" secondItem="0gI-FT-v34" secondAttribute="centerX" id="OVa-SM-oda"/>
-                            <constraint firstItem="omS-hA-EKX" firstAttribute="centerY" secondItem="0gI-FT-v34" secondAttribute="centerY" id="mMY-Kq-cf5"/>
+                            <constraint firstItem="omS-hA-EKX" firstAttribute="top" secondItem="GeB-pp-axh" secondAttribute="top" constant="226" id="vMR-td-pRB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GeB-pp-axh"/>
                     </view>
@@ -56,7 +65,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJd-hc-Uac">
                                 <rect key="frame" x="0.0" y="73.5" width="375" height="480"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="sJd-hc-Uac" secondAttribute="height" multiplier="25:32" id="CcS-AV-7cU"/>
+                                    <constraint firstAttribute="width" secondItem="sJd-hc-Uac" secondAttribute="height" multiplier="25:32" priority="900" id="CcS-AV-7cU"/>
+                                    <constraint firstAttribute="height" priority="500" constant="480" id="Vc6-A4-SAH"/>
                                 </constraints>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Ghc-sG-OR4">
@@ -101,11 +111,103 @@
                         <outlet property="closeButton" destination="BYp-RS-Y90" id="f58-tz-1Ab"/>
                         <outlet property="pageControl" destination="Ghc-sG-OR4" id="1qx-rC-aFt"/>
                         <outlet property="scrollView" destination="sJd-hc-Uac" id="X1r-Ey-bBH"/>
+                        <outlet property="scrollViewAspectRatio" destination="CcS-AV-7cU" id="MGd-qP-bOt"/>
+                        <outlet property="scrollViewHeight" destination="Vc6-A4-SAH" id="o3o-YE-qEP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8zF-zt-ylK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-882" y="-21"/>
+        </scene>
+        <!--Home Pop Collection View Controller-->
+        <scene sceneID="3Rt-db-Kxc">
+            <objects>
+                <viewController storyboardIdentifier="HomePopCollectionViewController" id="rUh-no-EsR" customClass="HomePopCollectionViewController" customModule="CustomView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eaC-jy-tCu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iSV-bP-kMD">
+                                <rect key="frame" x="0.0" y="73.5" width="375" height="480"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="iSV-bP-kMD" secondAttribute="height" multiplier="25:32" priority="900" id="kKL-ct-9SM"/>
+                                    <constraint firstAttribute="height" priority="500" constant="480" id="vxs-1h-xpE"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="big-2P-Wrq">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Y3Q-dF-HWy" customClass="CardPopCollectionViewCell" customModule="CustomView" customModuleProvider="target">
+                                        <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="rUh-no-EsR" id="agN-Vj-iFl"/>
+                                    <outlet property="delegate" destination="rUh-no-EsR" id="eDn-GB-3HG"/>
+                                </connections>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xqu-x1-bcg">
+                                <rect key="frame" x="120" y="595" width="135" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="135" id="1Ml-mT-Z0x"/>
+                                    <constraint firstAttribute="height" constant="40" id="A1j-xL-jIe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Close">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="closeButtonPressed:" destination="rUh-no-EsR" eventType="touchUpInside" id="NCJ-Kz-nGZ"/>
+                                </connections>
+                            </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Me1-N5-MrQ">
+                                <rect key="frame" x="168" y="554" width="39" height="37"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.13559503419999999" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Me1-N5-MrQ" firstAttribute="top" secondItem="iSV-bP-kMD" secondAttribute="bottom" id="JXb-ac-5EH"/>
+                            <constraint firstItem="xqu-x1-bcg" firstAttribute="top" secondItem="Me1-N5-MrQ" secondAttribute="bottom" constant="4" id="Q2C-sJ-wke"/>
+                            <constraint firstItem="iSV-bP-kMD" firstAttribute="centerY" secondItem="eaC-jy-tCu" secondAttribute="centerY" constant="-20" id="QUt-Fj-g9w"/>
+                            <constraint firstItem="iSV-bP-kMD" firstAttribute="leading" secondItem="ZvQ-Zs-zOw" secondAttribute="leading" id="YjS-4j-3bB"/>
+                            <constraint firstItem="iSV-bP-kMD" firstAttribute="trailing" secondItem="ZvQ-Zs-zOw" secondAttribute="trailing" id="ZAS-7Y-62f"/>
+                            <constraint firstItem="xqu-x1-bcg" firstAttribute="centerX" secondItem="eaC-jy-tCu" secondAttribute="centerX" id="szK-uo-hbV"/>
+                            <constraint firstItem="Me1-N5-MrQ" firstAttribute="centerX" secondItem="eaC-jy-tCu" secondAttribute="centerX" id="yC4-qT-xQV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZvQ-Zs-zOw"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="xqu-x1-bcg" id="bCk-XT-DGc"/>
+                        <outlet property="collectionAspectRatio" destination="kKL-ct-9SM" id="qeD-Z2-9tR"/>
+                        <outlet property="collectionHeight" destination="vxs-1h-xpE" id="M9S-kt-BAl"/>
+                        <outlet property="collectionView" destination="iSV-bP-kMD" id="Vri-F5-rkx"/>
+                        <outlet property="layout" destination="big-2P-Wrq" id="ALd-ZL-5Y0"/>
+                        <outlet property="pageControl" destination="Me1-N5-MrQ" id="IPR-P1-Jur"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Orl-2t-3AH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="15" y="-21"/>
         </scene>
     </scenes>
 </document>

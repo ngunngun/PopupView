@@ -10,8 +10,12 @@
 		2440D86B202433AD00BB3643 /* HomePopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2440D869202433AD00BB3643 /* HomePopViewController.swift */; };
 		2440D8702024356A00BB3643 /* HomePopup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2440D86F2024356A00BB3643 /* HomePopup.storyboard */; };
 		2440D872202438CC00BB3643 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2440D871202438CC00BB3643 /* UIView.swift */; };
+		2480F81F2028526E009800A3 /* HomePopCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480F81E2028526E009800A3 /* HomePopCollectionViewController.swift */; };
+		2480F82220285533009800A3 /* CardPopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2480F82020285533009800A3 /* CardPopCollectionViewCell.swift */; };
+		2480F82320285533009800A3 /* CardPopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2480F82120285533009800A3 /* CardPopCollectionViewCell.xib */; };
 		2496CD5B20230445003D36DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496CD5A20230445003D36DC /* AppDelegate.swift */; };
 		2496CD6220230445003D36DC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2496CD6120230445003D36DC /* Assets.xcassets */; };
+		24A52DAB20285C330027BF67 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A52DAA20285C330027BF67 /* UIDevice.swift */; };
 		24B1009E202320EA00366947 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B1009C202320EA00366947 /* ViewController.swift */; };
 		24B100A12023222300366947 /* HomePopUp.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24B100A02023222300366947 /* HomePopUp.xib */; };
 		24B100A520232C8600366947 /* HomePopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B100A420232C8600366947 /* HomePopUp.swift */; };
@@ -21,10 +25,14 @@
 		2440D869202433AD00BB3643 /* HomePopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopViewController.swift; sourceTree = "<group>"; };
 		2440D86F2024356A00BB3643 /* HomePopup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HomePopup.storyboard; sourceTree = "<group>"; };
 		2440D871202438CC00BB3643 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		2480F81E2028526E009800A3 /* HomePopCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopCollectionViewController.swift; sourceTree = "<group>"; };
+		2480F82020285533009800A3 /* CardPopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPopCollectionViewCell.swift; sourceTree = "<group>"; };
+		2480F82120285533009800A3 /* CardPopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardPopCollectionViewCell.xib; sourceTree = "<group>"; };
 		2496CD5720230445003D36DC /* CustomView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CustomView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2496CD5A20230445003D36DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2496CD6120230445003D36DC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2496CD6620230445003D36DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		24A52DAA20285C330027BF67 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		24B1009C202320EA00366947 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24B100A02023222300366947 /* HomePopUp.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomePopUp.xib; sourceTree = "<group>"; };
 		24B100A420232C8600366947 /* HomePopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePopUp.swift; sourceTree = "<group>"; };
@@ -60,6 +68,7 @@
 		2496CD5920230445003D36DC /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
+				24A52DA920285C210027BF67 /* Extensions */,
 				2496CD5A20230445003D36DC /* AppDelegate.swift */,
 				24B1009C202320EA00366947 /* ViewController.swift */,
 				2496CD6120230445003D36DC /* Assets.xcassets */,
@@ -68,9 +77,20 @@
 				24B100A02023222300366947 /* HomePopUp.xib */,
 				2440D869202433AD00BB3643 /* HomePopViewController.swift */,
 				2440D86F2024356A00BB3643 /* HomePopup.storyboard */,
-				2440D871202438CC00BB3643 /* UIView.swift */,
+				2480F81E2028526E009800A3 /* HomePopCollectionViewController.swift */,
+				2480F82020285533009800A3 /* CardPopCollectionViewCell.swift */,
+				2480F82120285533009800A3 /* CardPopCollectionViewCell.xib */,
 			);
 			path = CustomView;
+			sourceTree = "<group>";
+		};
+		24A52DA920285C210027BF67 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2440D871202438CC00BB3643 /* UIView.swift */,
+				24A52DAA20285C330027BF67 /* UIDevice.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,6 +154,7 @@
 			files = (
 				2440D8702024356A00BB3643 /* HomePopup.storyboard in Resources */,
 				24B100A12023222300366947 /* HomePopUp.xib in Resources */,
+				2480F82320285533009800A3 /* CardPopCollectionViewCell.xib in Resources */,
 				2496CD6220230445003D36DC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -145,11 +166,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2480F82220285533009800A3 /* CardPopCollectionViewCell.swift in Sources */,
 				2440D872202438CC00BB3643 /* UIView.swift in Sources */,
 				24B1009E202320EA00366947 /* ViewController.swift in Sources */,
 				2440D86B202433AD00BB3643 /* HomePopViewController.swift in Sources */,
 				24B100A520232C8600366947 /* HomePopUp.swift in Sources */,
+				2480F81F2028526E009800A3 /* HomePopCollectionViewController.swift in Sources */,
 				2496CD5B20230445003D36DC /* AppDelegate.swift in Sources */,
+				24A52DAB20285C330027BF67 /* UIDevice.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

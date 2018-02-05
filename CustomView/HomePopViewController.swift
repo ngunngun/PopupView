@@ -14,6 +14,11 @@ protocol HomePopViewControllerDelegate {
 
 class HomePopViewController: UIViewController, UIScrollViewDelegate {
 
+    
+    @IBOutlet weak var scrollViewAspectRatio: NSLayoutConstraint!
+    
+    @IBOutlet weak var scrollViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var pageControl: UIPageControl!
@@ -24,7 +29,6 @@ class HomePopViewController: UIViewController, UIScrollViewDelegate {
     
     var popupArray = [PopObj]()
 
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,43 +41,46 @@ class HomePopViewController: UIViewController, UIScrollViewDelegate {
         definesPresentationContext = true
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         
-        self.scrollView.updateLayout() //from extension
+        self.scrollView.updateLayout() //from extension, update to show correct layout
         self.scrollView.isPagingEnabled = true
         
         var pageX:CGFloat = 0
-        let pageW = self.scrollView.frame.size.width
-        let pageH = self.scrollView.frame.size.height
+        var pageW = self.scrollView.frame.size.width
+        var pageH = self.scrollView.frame.size.height
+        
+        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
+            //if in iPad
+            self.scrollViewAspectRatio.priority = 500
+            self.scrollViewHeight.priority = 900
+            
+            pageW = 500 //because we want to make view size to be 500 in iPad
+            pageX = (self.scrollView.frame.size.width - pageW)/2
+            
+            self.scrollViewHeight.constant = pageW * 1.3
+            pageH = self.scrollViewHeight.constant //because we updated the constant of height, so we have to update pageH too.
+            
+            self.scrollView.updateLayout()
+        }
+        
         for i in 0..<self.popupArray.count {
             //popup view
-            let popupFrame : CGRect = CGRect(x:pageX, y:0, width: pageW ,height:pageH)
+            let popupFrame : CGRect = CGRect(x:pageX, y:0, width: pageW ,height:pageH) //the reason why we have to updated pageH because we use it here.
             let popupView = HomePopUp.instanceFromNib()
             popupView.frame = popupFrame
             popupView.object = self.popupArray[i]
             self.scrollView.addSubview(popupView)
-            pageX += pageW
+            pageX += self.scrollView.frame.size.width
+        
+            
         }
         self.scrollView.contentSize = CGSize(width: pageX, height: pageH)
+
         
         // Do any additional setup after loading the view.
         self.delegate?.homePopDidLoad(object: true)
         
     }
 
-//    override func viewDidLayoutSubviews() {
-//        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-//            super.viewWillLayoutSubviews()
-//            self.scrollView.contentSize.height = 1.0
-//            self.view.superview?.bounds = CGRect(x:0, y:0, width: self.scrollView.frame.size.width * 0.8 ,height:scrollView.frame.size.height * 1.4)
-//        }
-//    }
-    
-    override func viewWillLayoutSubviews() {
-        if UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad {
-            super.viewWillLayoutSubviews()
-            self.scrollView.contentSize.height = 1.0
-            self.view.superview?.bounds = CGRect(x:0, y:0, width: self.scrollView.frame.size.width * 0.8 ,height:scrollView.frame.size.height * 1.4)
-        }
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

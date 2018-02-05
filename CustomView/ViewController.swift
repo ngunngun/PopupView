@@ -40,8 +40,7 @@ class ViewController: UIViewController {
     
     
     @IBAction func buttonPressed(_ sender: UIButton) {
-        self.performSegue(withIdentifier:
-            "openPop", sender: nil)
+        self.performSegue(withIdentifier:"openPop", sender: nil)
         /*
         if let vc = UIStoryboard(name:"HomePopup", bundle: nil).instantiateViewController(withIdentifier: "HomePopViewController") as? HomePopViewController {
             vc.modalPresentationStyle = .overCurrentContext
@@ -52,6 +51,11 @@ class ViewController: UIViewController {
         */
     }
     
+    @IBAction func collectionPressed(_ sender: Any) {
+        self.performSegue(withIdentifier: "collectionPop", sender: nil)
+    }
+    
+    
     //พอ performSegue ถูกเรียก อันนี้ก็ทำ
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -60,8 +64,17 @@ class ViewController: UIViewController {
                 vc.popupArray = self.popupArray
                 vc.delegate = self
             }
+        }else if segue.identifier == "collectionPop" {
+            if let vc = segue.destination as? HomePopCollectionViewController {
+                vc.popupArray = self.popupArray
+                vc.delegate = self
+            }
         }
     }
+    
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -74,11 +87,15 @@ class ViewController: UIViewController {
 
 }
 
-extension ViewController: HomePopViewControllerDelegate {
+extension ViewController: HomePopViewControllerDelegate, HomePopCollectionViewControllerDelegate {
     func homePopDidLoad(object: Any?) {
         if let isLoaded = object as? Bool {
             print("isLoaded: \(isLoaded)")
         }
+    }
+    
+    func homePopCollectionDidLoad(object: Any?) {
+        
     }
     
     
